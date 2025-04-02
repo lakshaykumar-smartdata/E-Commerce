@@ -57,7 +57,7 @@ namespace UserService.Services
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim("UserId", user.UserId.ToString()),
-                new Claim("UserRoleId", user.UserRole.ToString()),
+                new Claim("UserRoleId", ((int)user.UserRole).ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
