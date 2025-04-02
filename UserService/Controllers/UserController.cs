@@ -33,7 +33,8 @@ namespace UserService.Controllers
                 LastName = request.LastName,
                 Email = request.Email,
                 ContactNumber = request.ContactNumber,
-                UserRole = request.UserRole
+                UserRole = request.UserRole,
+                PasswordHash = request.Password
             };
 
             // Register the user and hash the password
