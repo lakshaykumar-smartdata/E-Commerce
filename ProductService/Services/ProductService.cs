@@ -9,12 +9,10 @@ namespace ProductService.Services
     public class ProductService: IProductService
     {
         private readonly ProductServiceDbContext _dbContext;
-        private readonly IConfiguration _configuration;
 
-        public ProductService(ProductServiceDbContext dbContext, IConfiguration configuration)
+        public ProductService(ProductServiceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _configuration = configuration;
         }
         public async Task<Guid> CreateOrUpdateProduct(ProductCreateRequestDTO dto)
         {
@@ -62,6 +60,7 @@ namespace ProductService.Services
         }
         private async Task<bool> ValidateSeller(int sellerId)
         {
+            //need httpcall to userservice
             return true;
         }
     }
