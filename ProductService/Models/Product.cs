@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using UserService.Models;
 
 namespace ProductService.Models
 {
@@ -26,8 +24,5 @@ namespace ProductService.Models
 
         [Required]
         public int SellerId { get; set; } // Foreign Key from UserService
-
-        [ForeignKey("SellerId")]
-        public virtual User Seller { get; set; } // Navigation Property
     }
 }
