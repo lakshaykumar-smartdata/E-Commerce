@@ -92,6 +92,20 @@ namespace ProductService.Services
 
             return false;
         }
+        public async Task<bool> DeductStockAsync(Guid productId, int quantity)
+        {
+            var product = await _dbContext.Products.FindAsync(productId);
+            if (product == null)
+                return false; // Product not found
+
+            if (product.Stock < quantity)
+                return false; // Not enough stock
+
+            product.Stock -= quantity;
+            await _dbContext.SaveChangesAsync();
+            return true;
+        }
+
 
     }
 }

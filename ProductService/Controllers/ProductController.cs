@@ -58,5 +58,15 @@ namespace ProductService.Controllers
             }
             return Ok(true);
         }
+        [Authorize]
+        [HttpPut("DeductStock")]
+        public async Task<IActionResult> DeductStock(Guid id, int quantity)
+        {
+            var success = await _productService.DeductStockAsync(id, quantity);
+            if (!success)
+                return BadRequest("Insufficient stock or product not found.");
+
+            return Ok();
+        }
     }
 }
