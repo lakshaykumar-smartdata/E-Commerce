@@ -63,5 +63,36 @@ namespace ProductService.Services
             //need httpcall to userservice
             return true;
         }
+        public async Task<List<Product>> GetProducts(int sellerId)
+        {
+            if (sellerId > 0)
+            {
+                return await _dbContext.Products
+                    .Where(p => p.SellerId == sellerId)
+                    .ToListAsync();
+            }
+            else
+            {
+                return await _dbContext.Products
+                    .Where(p => p.Stock > 0)
+                    .ToListAsync();
+            }
+        }
+
+        public async Task<bool> DeleteProductAsync(int sellerId, Guid productId)
+        {
+            var product = await _dbContext.Products
+                .FirstOrDefaultAsync(p => p.SellerId == sellerId && p.ProductId == productId);
+
+            if (product != null)
+            {
+                _dbContext.Products.Remove(product);
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }
