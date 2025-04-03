@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using UserService.Dto;
+using UserService.Services; // For accessing UserService
+using System.Threading.Tasks;
+using UserService.Models;
+using UserService.Enums;
 
 namespace UserService.Controllers
 {
@@ -8,36 +11,55 @@ namespace UserService.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        // GET: api/<UserController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IUserService _userService;
+
+        // Inject IUserService into the controller
+        public UserController(IUserService userService)
         {
-            return new string[] { "value1", "value2" };
+            _userService = userService;
         }
 
-        // GET api/<UserController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // User Registration Endpoint
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] UserRegistrationRequest request)
         {
-            return "value";
+            if (request == null)
+                return BadRequest(new { success = false, message = "Invalid request data." });
+
+            // Create User model from DTO
+            var user = new User
+            {
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Email = request.Email,
+                ContactNumber = request.ContactNumber,
+                UserRole = request.UserRole,
+                PasswordHash = request.Password
+            };
+
+            // Register the user and hash the password
+            var registrationResult = await _userService.UserRegistration(user);
+            if (registrationResult == "User registered successfully.")
+                return Ok(new { success = true, message = registrationResult });
+
+            return BadRequest(new { success = false, message = registrationResult });
         }
 
-        // POST api/<UserController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // User Login Endpoint
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] UserLoginRequest request)
         {
-        }
+            if (request == null)
+                return BadRequest(new { success = false, message = "Invalid request data." });
 
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+            // Perform login with email and password
+            var token = await _userService.UserLogin(request.Email, request.Password);
 
-        // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            if (token == "Invalid email or password.")
+                return Unauthorized(new { success = false, message = token });
+
+            // Return JWT token
+            return Ok(new { success = true, message = "User logged in successfully.", token = token });
         }
     }
 }
