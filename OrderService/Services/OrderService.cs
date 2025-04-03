@@ -24,7 +24,7 @@ namespace OrderService.Services
             return await _dbContext.Orders.ToListAsync();
         }
 
-        public async Task<Order> PlaceOrderAsync(Order order, string bearerToken)
+        public async Task<int> PlaceOrderAsync(Order order, string bearerToken)
         {
             using var httpClient = new HttpClient();
 
@@ -38,12 +38,12 @@ namespace OrderService.Services
             var response = await httpClient.PutAsync(requestUrl, null);
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception($"Failed to deduct stock for Product ID: {productId}");
+                return 0;
             }
 
             _dbContext.Orders.Add(order);
             await _dbContext.SaveChangesAsync();
-            return order;
+            return order.OrderId;
         }
 
 

@@ -52,8 +52,16 @@ namespace OrderService.Controllers
 
             try
             {
-                var createdOrder = await _orderService.PlaceOrderAsync(order, bearerToken);
-                return CreatedAtAction(nameof(GetOrderById), new { orderId = createdOrder.OrderId }, createdOrder);
+                var orderId = await _orderService.PlaceOrderAsync(order, bearerToken);
+                if (orderId > 0)
+                {
+                    return Ok(orderId);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+
             }
             catch (Exception ex)
             {
