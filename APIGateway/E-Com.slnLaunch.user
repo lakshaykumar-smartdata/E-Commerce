@@ -4,15 +4,23 @@
     "Projects": [
       {
         "Path": "APIGateway.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "IIS Express"
       },
       {
         "Path": "..\\UserService\\UserService.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "IIS Express"
       },
       {
         "Path": "..\\ProductService\\ProductService.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "IIS Express"
+      },
+      {
+        "Path": "..\\OrderService\\OrderService.csproj",
+        "Action": "Start",
+        "DebugTarget": "IIS Express"
       }
     ]
   }

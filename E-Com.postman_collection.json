@@ -197,6 +197,231 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "DeductStock",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsYWtzaGF5QHlvcG1haWwuY29tIiwiVXNlcklkIjoiMSIsIlVzZXJSb2xlSWQiOiIxIiwianRpIjoiNWJlMGNiMjItMWYzMC00ZDkzLTg5M2MtMDU1ODZmODkyZDliIiwiZXhwIjoxNzQzNjc4MDcxLCJpc3MiOiJ3d3cuc21hcnRkYXRhaW5jLm5ldCIsImF1ZCI6InNtYXJ0ZGF0YSJ9.tx1Zskt0k6BR4jwllhpIkSwG3IfaPOuPhpXMuwrdY5k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44357/api/Product/DeductStock?id=0fe4a5ca-38bc-4ea0-844f-3f3aa750d133&quantity=2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44357",
+							"path": [
+								"api",
+								"Product",
+								"DeductStock"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "0fe4a5ca-38bc-4ea0-844f-3f3aa750d133"
+								},
+								{
+									"key": "quantity",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "GetOrderById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44397/api/Order/GetOrderById?orderId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44397",
+							"path": [
+								"api",
+								"Order",
+								"GetOrderById"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllOrders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44397/api/Order/GetAllOrders",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44397",
+							"path": [
+								"api",
+								"Order",
+								"GetAllOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PlaceOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"quantity\": 2147483647\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44397/api/Order/PlaceOrder",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44397",
+							"path": [
+								"api",
+								"Order",
+								"PlaceOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOrderStatus",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"Shipped\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44397/api/Order/UpdateOrderStatus?orderId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44397",
+							"path": [
+								"api",
+								"Order",
+								"UpdateOrderStatus"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOrder",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44397/api/Order/DeleteOrder?orderId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44397",
+							"path": [
+								"api",
+								"Order",
+								"DeleteOrder"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
