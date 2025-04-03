@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProductService.Data;
+using ProductService.Enums;
 using ProductService.Services;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +24,10 @@ builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer
     });
 
 // Add Authorization
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("SellerOnly", policy => policy.RequireClaim("UserRoleId", UserRole.Seller.ToString()));
+});
 builder.Services.AddControllers();
 builder.Services.AddScoped<IProductService, ProductService.Services.ProductService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

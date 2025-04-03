@@ -74,7 +74,6 @@ namespace ProductService.Services
             else
             {
                 return await _dbContext.Products
-                    .Where(p => p.Stock > 0)
                     .ToListAsync();
             }
         }

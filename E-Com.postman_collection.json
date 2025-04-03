@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "e39a0126-8f5a-4890-9d83-3bf704061637",
+		"name": "E-Com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28879856",
+		"_collection_link": "https://orange-station-250855.postman.co/workspace/New-Team-Workspace~7a4514d4-2696-44bd-9f50-b5e4e220ea3b/collection/28879856-e39a0126-8f5a-4890-9d83-3bf704061637?action=share&source=collection_link&creator=28879856"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userRole\": 2,\r\n  \"firstName\": \"Lakshay\",\r\n  \"lastName\": \"Seller\",\r\n  \"email\": \"lakshaySeller@yopmail.com\",\r\n  \"password\": \"smart@lk07\",\r\n  \"contactNumber\": \"7867876787\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44384/user/api/User/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44384",
+							"path": [
+								"user",
+								"api",
+								"User",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"lakshay@yopmail.com\",\r\n  \"password\": \"smart@lk07\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44384/user/api/User/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44384",
+							"path": [
+								"user",
+								"api",
+								"User",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "AddUpdateProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsYWtzaGF5QHlvcG1haWwuY29tIiwiVXNlcklkIjoiMSIsIlVzZXJSb2xlSWQiOiIxIiwianRpIjoiNWJlMGNiMjItMWYzMC00ZDkzLTg5M2MtMDU1ODZmODkyZDliIiwiZXhwIjoxNzQzNjc4MDcxLCJpc3MiOiJ3d3cuc21hcnRkYXRhaW5jLm5ldCIsImF1ZCI6InNtYXJ0ZGF0YSJ9.tx1Zskt0k6BR4jwllhpIkSwG3IfaPOuPhpXMuwrdY5k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Puma Pant\",\r\n  \"description\": \"Pant\",\r\n  \"price\": 1999.99,\r\n  \"stock\": 5,\r\n  \"sellerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44384/product/api/Product/AddUpdateProduct",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44384",
+							"path": [
+								"product",
+								"api",
+								"Product",
+								"AddUpdateProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsYWtzaGF5QHlvcG1haWwuY29tIiwiVXNlcklkIjoiMSIsIlVzZXJSb2xlSWQiOiIxIiwianRpIjoiNWJlMGNiMjItMWYzMC00ZDkzLTg5M2MtMDU1ODZmODkyZDliIiwiZXhwIjoxNzQzNjc4MDcxLCJpc3MiOiJ3d3cuc21hcnRkYXRhaW5jLm5ldCIsImF1ZCI6InNtYXJ0ZGF0YSJ9.tx1Zskt0k6BR4jwllhpIkSwG3IfaPOuPhpXMuwrdY5k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44384/product/api/Product/GetProduct?sellerId=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44384",
+							"path": [
+								"product",
+								"api",
+								"Product",
+								"GetProduct"
+							],
+							"query": [
+								{
+									"key": "sellerId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44357/api/Product/DeleteProduct?sellerId=3&productId=0fe4a5ca-38bc-4ea0-844f-3f3aa750d153",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44357",
+							"path": [
+								"api",
+								"Product",
+								"DeleteProduct"
+							],
+							"query": [
+								{
+									"key": "sellerId",
+									"value": "3"
+								},
+								{
+									"key": "productId",
+									"value": "0fe4a5ca-38bc-4ea0-844f-3f3aa750d153"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

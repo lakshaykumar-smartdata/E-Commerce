@@ -7,7 +7,6 @@ namespace ProductService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -16,6 +15,7 @@ namespace ProductService.Controllers
         {
             _productService = productService;
         }
+        [Authorize(Policy = "SellerOnly")]
         [HttpPost("AddUpdateProduct")]
         public async Task<IActionResult> CreateOrUpdateProduct([FromBody] ProductCreateRequestDTO dto)
         {
@@ -47,7 +47,8 @@ namespace ProductService.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
-        [HttpDelete("{sellerId}/{productId}")]
+        [Authorize(Policy = "SellerOnly")]
+        [HttpDelete("DeleteProduct")]
         public async Task<IActionResult> DeleteProduct(int sellerId, Guid productId)
         {
             var result = await _productService.DeleteProductAsync(sellerId, productId);
