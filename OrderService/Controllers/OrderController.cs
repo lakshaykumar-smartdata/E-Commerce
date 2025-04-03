@@ -36,6 +36,12 @@ namespace OrderService.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            var bearerToken = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            if (string.IsNullOrEmpty(bearerToken))
+            {
+                return Unauthorized("Bearer token is missing.");
+            }
+
             var order = new Order
             {
                 ProductId = orderDto.ProductId,
@@ -44,8 +50,15 @@ namespace OrderService.Controllers
                 CreatedAt = DateTime.UtcNow
             };
 
-            var createdOrder = await _orderService.PlaceOrderAsync(order);
-            return CreatedAtAction(nameof(GetOrderById), new { orderId = createdOrder.OrderId }, createdOrder);
+            try
+            {
+                var createdOrder = await _orderService.PlaceOrderAsync(order, bearerToken);
+                return CreatedAtAction(nameof(GetOrderById), new { orderId = createdOrder.OrderId }, createdOrder);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error placing order: {ex.Message}");
+            }
         }
 
         [HttpPut("UpdateOrderStatus")]
