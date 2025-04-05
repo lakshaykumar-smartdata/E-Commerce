@@ -26,7 +26,10 @@ builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer
 // Add Authorization
 builder.Services.AddAuthorization(options =>
 {
+    options.AddPolicy("CustomerOnly", policy => policy.RequireClaim("UserRoleId", UserRole.Customer.ToString()));
+
     options.AddPolicy("SellerOnly", policy => policy.RequireClaim("UserRoleId", UserRole.Seller.ToString()));
+
 });
 builder.Services.AddControllers();
 builder.Services.AddScoped<IOrderService, OrderService.Services.OrderService>();

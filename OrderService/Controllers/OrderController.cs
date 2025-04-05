@@ -6,7 +6,7 @@ using OrderService.Services;
 
 namespace OrderService.Controllers
 {
-    [Authorize] // Requires authentication
+    [Authorize(Policy = "CustomerOnly")]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
