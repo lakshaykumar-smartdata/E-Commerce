@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Dto;
 using OrderService.Models;
@@ -12,10 +13,12 @@ namespace OrderService.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public OrderController(IOrderService orderService)
+        public OrderController(IOrderService orderService, IPublishEndpoint publishEndpoint)
         {
             _orderService = orderService;
+            _publishEndpoint = publishEndpoint;
         }
         [HttpGet("GetOrderById")]
         public async Task<IActionResult> GetOrderById(int orderId)
@@ -52,6 +55,7 @@ namespace OrderService.Controllers
 
             try
             {
+                await _publishEndpoint.Publish<Order>(order);
                 var orderId = await _orderService.PlaceOrderAsync(order, bearerToken);
                 if (orderId > 0)
                 {
