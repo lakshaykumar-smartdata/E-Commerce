@@ -2,6 +2,7 @@
 using OrderService.Services;
 using OrderService.Data;
 using OrderService.Enums;
+using MassTransit;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,6 +23,18 @@ builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer
             IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
     });
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("rabbitmq://localhost", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+    });
+});
+
 
 // Add Authorization
 builder.Services.AddAuthorization(options =>
@@ -32,7 +45,8 @@ builder.Services.AddAuthorization(options =>
 
 });
 builder.Services.AddControllers();
-builder.Services.AddScoped<IOrderService, OrderService.Services.OrderService>();
+//builder.Services.AddScoped<IOrderService, OrderService.Services.OrderService>();
+builder.Services.AddHttpClient<IOrderService, OrderService.Services.OrderService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

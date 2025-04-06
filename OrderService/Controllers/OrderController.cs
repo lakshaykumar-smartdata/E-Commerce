@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using OrderService.Dto;
 using OrderService.Models;
 using OrderService.Services;
+using Shared.Models;
 
 namespace OrderService.Controllers
 {
@@ -55,10 +56,14 @@ namespace OrderService.Controllers
 
             try
             {
-                await _publishEndpoint.Publish<Order>(order);
                 var orderId = await _orderService.PlaceOrderAsync(order, bearerToken);
                 if (orderId > 0)
                 {
+                    await _publishEndpoint.Publish(new OrderCreated
+                    {
+                        OrderId = orderId,
+                        CustomerEmail = ""
+                    });
                     return Ok(orderId);
                 }
                 else
