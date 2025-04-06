@@ -38,3 +38,5 @@
 *NotificationService/coverage/
 
 *.vs
+*Shared/obj/
+*Shared/bin/

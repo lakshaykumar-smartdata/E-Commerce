@@ -82,6 +82,14 @@ namespace OrderService.Controllers
         public async Task<IActionResult> UpdateOrderStatus(int orderId, [FromBody] OrderStatusUpdateDTO statusDto)
         {
             var success = await _orderService.UpdateOrderStatusAsync(orderId, statusDto.Status);
+            await _publishEndpoint.Publish(new OrderShipped
+            {
+                OrderId = orderId,
+                ShippedAt = DateTime.UtcNow,
+                TrackingNumber = "",
+                CustomerEmail = ""
+            });
+
             if (!success) return NotFound("Order not found.");
 
             return Ok("Order status updated.");

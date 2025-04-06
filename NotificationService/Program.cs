@@ -10,6 +10,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<OrderCreatedConsumer>();
+    x.AddConsumer<OrderShippedConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>
     {
@@ -22,6 +23,10 @@ builder.Services.AddMassTransit(x =>
         cfg.ReceiveEndpoint("order-created-queue", e =>
         {
             e.ConfigureConsumer<OrderCreatedConsumer>(context);
+        });
+        cfg.ReceiveEndpoint("order-shipped-queue", e =>
+        {
+            e.ConfigureConsumer<OrderShippedConsumer>(context);
         });
     });
 });
