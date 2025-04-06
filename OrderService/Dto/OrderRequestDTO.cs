@@ -13,5 +13,7 @@ namespace OrderService.Dto
         
         [Required] // Ensures CustomerId cannot be null
         public int CustomerId { get; set; }
+        [Required] 
+        public string CustomerEmail { get; set; } = string.Empty;
     }
 }

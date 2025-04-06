@@ -26,6 +26,6 @@ namespace OrderService.Models
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         [Required] // Ensures CustomerId cannot be null
-        public Guid CustomerId { get; set; }
+        public int CustomerId { get; set; }
     }
 }
