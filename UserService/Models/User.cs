@@ -34,5 +34,8 @@ namespace UserService.Models
 
         [Required]
         public string PasswordHash { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
+        public DateTime LastLoginAt { get; set; }
+
     }
 }
