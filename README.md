@@ -34,4 +34,4 @@
 ![E-Commerce System Flow Diagram](./ecommerce_flow_diagram.png)
 
 
-*(Note: Add the actual flow diagram image in the project directory and update the filename accordingly.)*
+*(E-Commerce Product Catalog & Order Tracking System Workflow.)*
