@@ -1,19 +1,34 @@
 ﻿using MassTransit;
+using NotificationService.Services;
 using Shared.Models;
 
 namespace NotificationService.Consumer
 {
     public class OrderShippedConsumer : IConsumer<OrderShipped>
     {
-        public Task Consume(ConsumeContext<OrderShipped> context)
+        private readonly IEmailService _emailService;
+
+        public OrderShippedConsumer(IEmailService emailService)
+        {
+            _emailService = emailService;
+        }
+
+        public async Task Consume(ConsumeContext<OrderShipped> context)
         {
             var message = context.Message;
 
-            Console.WriteLine($"[Notification] Order {message.OrderId} has shipped to {message.CustomerEmail} with tracking number {message.TrackingNumber}");
+            Console.WriteLine($"[NotificationService] Sending shipment email to {message.CustomerEmail} for Order {message.OrderId}");
 
-            // Send shipment notification email or SMS here...
+            var subject = $"Your order {message.OrderId} has been shipped!";
+            var body = $@"
+                <h3>Your order has shipped!</h3>
+                <p>Order ID: <strong>{message.OrderId}</strong></p>
+                <p>Tracking Number: <strong>{message.TrackingNumber}</strong></p>
+                <p>Shipped At: {message.ShippedAt:G}</p>
+                <p>Thank you for shopping with us.</p>
+            ";
 
-            return Task.CompletedTask;
+            await _emailService.SendEmailAsync(message.CustomerEmail, subject, body);
         }
     }
 }
