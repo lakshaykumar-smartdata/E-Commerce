@@ -31,6 +31,7 @@ namespace UserService.Services
                 return "User already exists.";
 
             user.PasswordHash = BC.HashPassword(user.PasswordHash); // Hash password before saving
+            user.CreatedAt = DateTime.UtcNow;
             _dbContext.Users.Add(user);
             await _dbContext.SaveChangesAsync();
 
@@ -40,10 +41,12 @@ namespace UserService.Services
         // User Login - Verify Password and Generate JWT Token
         public async Task<string> UserLogin(string email, string password)
         {
-            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+            var user = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Email == email);
             if (user == null || !BC.Verify(password, user.PasswordHash))
                 return "Invalid email or password.";
-
+            user.LastLoginAt = DateTime.UtcNow;
+            _dbContext.Users.Update(user);
+            await _dbContext.SaveChangesAsync();
             return GenerateJwtToken(user);
         }
 

@@ -34,6 +34,7 @@ namespace ProductService.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+        [Authorize]
         [HttpGet("GetProduct")]
         public async Task<IActionResult> GetProduct(int sellerId = 0)
         {
