@@ -10,5 +10,10 @@ namespace OrderService.Dto
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
         public int Quantity { get; set; }
+        
+        [Required] // Ensures CustomerId cannot be null
+        public int CustomerId { get; set; }
+        [Required] 
+        public string CustomerEmail { get; set; } = string.Empty;
     }
 }

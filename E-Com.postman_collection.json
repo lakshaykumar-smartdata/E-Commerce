@@ -28,12 +28,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44384/user/api/User/register",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/user/api/User/register",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44384",
 							"path": [
 								"user",
 								"api",
@@ -62,12 +60,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44384/user/api/User/login",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/user/api/User/login",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44384",
 							"path": [
 								"user",
 								"api",
@@ -108,12 +104,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44384/product/api/Product/AddUpdateProduct",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/product/api/Product/AddUpdateProduct",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44384",
 							"path": [
 								"product",
 								"api",
@@ -140,12 +134,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:44384/product/api/Product/GetProduct?sellerId=1",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/product/api/Product/GetProduct?sellerId=1",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44384",
 							"path": [
 								"product",
 								"api",
@@ -173,13 +165,12 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost:44357/api/Product/DeleteProduct?sellerId=3&productId=0fe4a5ca-38bc-4ea0-844f-3f3aa750d153",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/product/api/Product/DeleteProduct?sellerId=3&productId=0fe4a5ca-38bc-4ea0-844f-3f3aa750d153",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44357",
 							"path": [
+								"product",
 								"api",
 								"Product",
 								"DeleteProduct"
@@ -219,13 +210,12 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost:44357/api/Product/DeductStock?id=0fe4a5ca-38bc-4ea0-844f-3f3aa750d133&quantity=2",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/product/api/Product/DeductStock?id=0fe4a5ca-38bc-4ea0-844f-3f3aa750d133&quantity=2",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44357",
 							"path": [
+								"product",
 								"api",
 								"Product",
 								"DeductStock"
@@ -260,13 +250,12 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost:44397/api/Order/GetOrderById?orderId=1",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/order/api/Order/GetOrderById?orderId=1",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44397",
 							"path": [
+								"order",
 								"api",
 								"Order",
 								"GetOrderById"
@@ -284,6 +273,16 @@
 				{
 					"name": "GetAllOrders",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsYWtzaGF5QHlvcG1haWwuY29tIiwiVXNlcklkIjoiMSIsIlVzZXJSb2xlSWQiOiIxIiwianRpIjoiNWJlMGNiMjItMWYzMC00ZDkzLTg5M2MtMDU1ODZmODkyZDliIiwiZXhwIjoxNzQzNjc4MDcxLCJpc3MiOiJ3d3cuc21hcnRkYXRhaW5jLm5ldCIsImF1ZCI6InNtYXJ0ZGF0YSJ9.tx1Zskt0k6BR4jwllhpIkSwG3IfaPOuPhpXMuwrdY5k",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -292,13 +291,12 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost:44397/api/Order/GetAllOrders",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/order/api/Order/GetAllOrders",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44397",
 							"path": [
+								"order",
 								"api",
 								"Order",
 								"GetAllOrders"
@@ -310,6 +308,16 @@
 				{
 					"name": "PlaceOrder",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsYWtzaGF5QHlvcG1haWwuY29tIiwiVXNlcklkIjoiMSIsIlVzZXJSb2xlSWQiOiIxIiwianRpIjoiNWJlMGNiMjItMWYzMC00ZDkzLTg5M2MtMDU1ODZmODkyZDliIiwiZXhwIjoxNzQzNjc4MDcxLCJpc3MiOiJ3d3cuc21hcnRkYXRhaW5jLm5ldCIsImF1ZCI6InNtYXJ0ZGF0YSJ9.tx1Zskt0k6BR4jwllhpIkSwG3IfaPOuPhpXMuwrdY5k",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -323,7 +331,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"productId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"quantity\": 2147483647\n}",
+							"raw": "{\n  \"productId\": \"0fe4a5ca-38bc-4ea0-844f-3f3aa750d153\",\n  \"quantity\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -331,13 +339,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44397/api/Order/PlaceOrder",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/order/api/Order/PlaceOrder",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44397",
 							"path": [
+								"order",
 								"api",
 								"Order",
 								"PlaceOrder"
@@ -349,6 +356,16 @@
 				{
 					"name": "UpdateOrderStatus",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsYWtzaGF5QHlvcG1haWwuY29tIiwiVXNlcklkIjoiMSIsIlVzZXJSb2xlSWQiOiIxIiwianRpIjoiNWJlMGNiMjItMWYzMC00ZDkzLTg5M2MtMDU1ODZmODkyZDliIiwiZXhwIjoxNzQzNjc4MDcxLCJpc3MiOiJ3d3cuc21hcnRkYXRhaW5jLm5ldCIsImF1ZCI6InNtYXJ0ZGF0YSJ9.tx1Zskt0k6BR4jwllhpIkSwG3IfaPOuPhpXMuwrdY5k",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -370,13 +387,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44397/api/Order/UpdateOrderStatus?orderId=1",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/order/api/Order/UpdateOrderStatus?orderId=2",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44397",
 							"path": [
+								"order",
 								"api",
 								"Order",
 								"UpdateOrderStatus"
@@ -384,7 +400,7 @@
 							"query": [
 								{
 									"key": "orderId",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -394,6 +410,16 @@
 				{
 					"name": "DeleteOrder",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsYWtzaGF5QHlvcG1haWwuY29tIiwiVXNlcklkIjoiMSIsIlVzZXJSb2xlSWQiOiIxIiwianRpIjoiNWJlMGNiMjItMWYzMC00ZDkzLTg5M2MtMDU1ODZmODkyZDliIiwiZXhwIjoxNzQzNjc4MDcxLCJpc3MiOiJ3d3cuc21hcnRkYXRhaW5jLm5ldCIsImF1ZCI6InNtYXJ0ZGF0YSJ9.tx1Zskt0k6BR4jwllhpIkSwG3IfaPOuPhpXMuwrdY5k",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -402,13 +428,12 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost:44397/api/Order/DeleteOrder?orderId=1",
-							"protocol": "https",
+							"raw": "{{APIGateway}}/order/api/Order/DeleteOrder?orderId=1",
 							"host": [
-								"localhost"
+								"{{APIGateway}}"
 							],
-							"port": "44397",
 							"path": [
+								"order",
 								"api",
 								"Order",
 								"DeleteOrder"
@@ -424,6 +449,35 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "APIGateway",
+			"value": "https://localhost:4438",
+			"type": "string"
 		}
 	]
 }
