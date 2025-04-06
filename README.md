@@ -31,6 +31,7 @@
 - **Database Per Service**: Products, orders, and users stored separately.
 
 ## System Flow Diagram
-![E-Commerce System Flow Diagram](Meeting Whiteboard 1.png)
+![E-Commerce System Flow Diagram](./ecommerce_flow_diagram.png)
+
 
 *(Note: Add the actual flow diagram image in the project directory and update the filename accordingly.)*
