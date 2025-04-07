@@ -34,4 +34,4 @@
 ![E-Commerce System Flow Diagram](./ecommerce_flow_diagram.png)
 
 
-*(E-Commerce Product Catalog & Order Tracking System Workflow.)*
+*(E-Commerce Product Catalog & Order Tracking System Workflow. )*
