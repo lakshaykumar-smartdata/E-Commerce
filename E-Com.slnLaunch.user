@@ -3,22 +3,27 @@
     "Name": "New Profile",
     "Projects": [
       {
-        "Path": "APIGateway.csproj",
+        "Path": "APIGateway\\APIGateway.csproj",
         "Action": "Start",
         "DebugTarget": "IIS Express"
       },
       {
-        "Path": "..\\UserService\\UserService.csproj",
+        "Path": "UserService\\UserService.csproj",
         "Action": "Start",
         "DebugTarget": "IIS Express"
       },
       {
-        "Path": "..\\ProductService\\ProductService.csproj",
+        "Path": "ProductService\\ProductService.csproj",
         "Action": "Start",
         "DebugTarget": "IIS Express"
       },
       {
-        "Path": "..\\OrderService\\OrderService.csproj",
+        "Path": "OrderService\\OrderService.csproj",
+        "Action": "Start",
+        "DebugTarget": "IIS Express"
+      },
+      {
+        "Path": "NotificationService\\NotificationService.csproj",
         "Action": "Start",
         "DebugTarget": "IIS Express"
       }
