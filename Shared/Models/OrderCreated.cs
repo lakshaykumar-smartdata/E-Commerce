@@ -10,5 +10,7 @@ namespace Shared.Models
     {
         public int OrderId { get; init; }
         public string CustomerEmail { get; init; } = default!;
+        public string SellerEmail { get; init; } = default!;
+
     }
 }

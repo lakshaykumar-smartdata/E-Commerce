@@ -4,6 +4,7 @@ using UserService.Services; // For accessing UserService
 using System.Threading.Tasks;
 using UserService.Models;
 using UserService.Enums;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UserService.Controllers
 {
@@ -61,5 +62,13 @@ namespace UserService.Controllers
             // Return JWT token
             return Ok(new { success = true, message = "User logged in successfully.", token = token });
         }
+        [Authorize(Policy = "AdminOnly")]
+        [HttpGet("GetUserLoginLogsAsync")]
+        public async Task<IActionResult> GetUserLoginLogsAsync()
+        {
+            var list = await _userService.GetUserLoginLogsAsync();
+            return Ok(list);
+        }
+
     }
 }

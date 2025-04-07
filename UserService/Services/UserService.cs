@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using UserService.Data;
+using UserService.Dto;
 using UserService.Enums;
 using UserService.Models;
 using BC = BCrypt.Net.BCrypt; // For hashing passwords
@@ -74,5 +75,22 @@ namespace UserService.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+        public async Task<List<UserLoginLogs>> GetUserLoginLogsAsync()
+        {
+            return await _dbContext.Users
+                .AsNoTracking()
+                .Select(user => new UserLoginLogs
+                {
+                    UserRole = user.UserRole,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    ContactNumber = user.ContactNumber,
+                    LastLoginAt = user.LastLoginAt,
+                    CreatedAt = user.CreatedAt
+                })
+                .ToListAsync();
+        }
+
     }
 }

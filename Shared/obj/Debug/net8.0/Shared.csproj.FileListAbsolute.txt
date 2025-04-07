@@ -10,3 +10,15 @@ C:\Users\laksh\Desktop\E-Com\Shared\obj\Debug\net8.0\Shared.dll
 C:\Users\laksh\Desktop\E-Com\Shared\obj\Debug\net8.0\refint\Shared.dll
 C:\Users\laksh\Desktop\E-Com\Shared\obj\Debug\net8.0\Shared.pdb
 C:\Users\laksh\Desktop\E-Com\Shared\obj\Debug\net8.0\ref\Shared.dll
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\bin\Debug\net8.0\Shared.deps.json
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\bin\Debug\net8.0\Shared.dll
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\bin\Debug\net8.0\Shared.pdb
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\obj\Debug\net8.0\Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\obj\Debug\net8.0\Shared.AssemblyInfoInputs.cache
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\obj\Debug\net8.0\Shared.AssemblyInfo.cs
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\obj\Debug\net8.0\Shared.csproj.CoreCompileInputs.cache
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\obj\Debug\net8.0\Shared.sourcelink.json
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\obj\Debug\net8.0\Shared.dll
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\obj\Debug\net8.0\refint\Shared.dll
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\obj\Debug\net8.0\Shared.pdb
+D:\DayUsers\LakshayKumar\Projects\Microservice Session\Assessment\E-Commerce\Shared\obj\Debug\net8.0\ref\Shared.dll

@@ -51,7 +51,7 @@ namespace OrderService.Controllers
             var order = new Order
             {
                 ProductId = orderDto.ProductId,
-                CustomerId= orderDto.CustomerId,
+                CustomerId = orderDto.CustomerId,
                 Quantity = orderDto.Quantity,
                 Status = "Processing",
                 CreatedAt = DateTime.UtcNow
@@ -65,7 +65,8 @@ namespace OrderService.Controllers
                     await _publishEndpoint.Publish(new OrderCreated
                     {
                         OrderId = orderId,
-                        CustomerEmail = orderDto.CustomerEmail
+                        CustomerEmail = orderDto.CustomerEmail,
+                        SellerEmail = ""
                     });
                     return Ok(orderId);
                 }
